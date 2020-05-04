@@ -78,7 +78,7 @@ var ShoppingList = [];
 
 function PassList()
 {
- var url = "https://webman2020.github.io/week15/index.html?list=" + ShoppingList;
+ var url = "https://webman2020.github.io/week15/index.html?list="+ ShoppingList;
     var accessToken = "81f621fe719173e36cb24f0f61f31843afce8114";
 
     var params = {
