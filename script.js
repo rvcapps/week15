@@ -23,6 +23,19 @@ function WhenLoad()	{
 	ttt = setTimeout("ClearFocus()", 1500);
 }
 
+//added by CK 5/4/2020
+//v4.1 get values via URL
+function get(name){
+    var url = window.location.search;
+    var num = url.search(name);
+    var namel = name.length;
+    var frontlength = namel+num+1; //length of everything before the value
+    var front = url.substring(0, frontlength);
+    url = url.replace(front, "");
+    num = url.search("&");
+    if(num>=0) return url.substr(0,num);
+    if(num<0)  return url;
+}
 
 // ——————————————————————————————————————————————————————
 // CLICKING ABOUT BUTTON LAUNCHES ALERT ABOUT APP
@@ -177,6 +190,7 @@ function DeleteCookie(Name) {
 
 
 // —————————	v4.0 PopulateShoppingListonload
+/*	-----------------------BEGIN SECTION COMMENTED OUT
 
 function PopulateShoppingListonload() {
 	ShoppingList = [];
@@ -192,6 +206,29 @@ function PopulateShoppingListonload() {
 	y = y.split('%2C');
 
 	if (y) { ShoppingList = y; }
+}
+---------------------------END SECTION COMMENTED OUT	*/
+
+function PopulateShoppingListonload() {
+	ShoppingList = [];
+	AddToCart = [];
+
+	//	load cookie into array
+	var y = ReadCookie("DunmireShopList");
+
+	//	remove unwanted chars and format
+	y = RemoveUnwanted(y); 
+
+	 //v 4.1 get URL
+  var geturllistvalue = get("list");
+    if (geturllistvalue) {
+        geturllistvalue = RemoveUnwanted(geturllistvalue);
+      geturllistvalue = geturllistvalue.split(',');
+      ShoppingList = geturllistvalue;
+  }else if (y){
+       y = y.split('%2C');
+      ShoppingList = y;
+  }
 }
 
 
