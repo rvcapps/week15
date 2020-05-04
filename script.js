@@ -229,6 +229,7 @@ function PopulateShoppingListonload() {
        y = y.split('%2C');
       ShoppingList = y;
   }
+	alert(ShoppingList);
 }
 
 
