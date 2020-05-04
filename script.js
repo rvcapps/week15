@@ -110,10 +110,10 @@ alert(url);
         data: JSON.stringify(params)
 	}).done(function(data) {
 		getshorturl = 1;
-		document.getElementById("sharelist").innerHTML = "The URL to share the list:\n" + data.link;
+		document.getElementById("ShareList").innerHTML = "The URL to share the list:\n" + data.link;
 		copyToClipboard(data.link);
 	}).fail(function(data) {
-		document.getElementById("sharelist").innerHTML = "The URL to share the list:\n" + url;
+		document.getElementById("ShareList").innerHTML = "The URL to share the list:\n" + url;
 		copyToClipboard(URL);
 	});
 }
