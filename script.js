@@ -97,7 +97,7 @@ function PassList()
     var params = {
         "long_url" : url           
     };
-
+alert(url);
     $.ajax({
         url: "https://api-ssl.bitly.com/v4/shorten",
         cache: false,
