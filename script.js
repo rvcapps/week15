@@ -49,7 +49,7 @@ var ShoppingList = [];
 
 //function PassList() {
 	//	replace YOURGITHUBURL with your Github repo URL example: Konkollist.github.io
-	var url = "https://webman2020.github.io/week15/index.html?list=" + ShoppingList;
+//	var url = "https://webman2020.github.io/week15/index.html?list=" + ShoppingList;
 //
 	//	replace with your NEW Bit.ly TOKEN
 //	var accessToken = "81f621fe719173e36cb24f0f61f31843afce8114";
@@ -147,18 +147,28 @@ function SaveCookie() {
 
 // —————————	v4.0 read cookie and return
 
-function ReadCookie(Name) {
-	var NameEQ = Name + "=";
-	var ca = document.cookie.split(";");
-	for(var i = 0; i < ca.length; i++) {
-		var c = ca[i];
-		while (c.charAt(0)==" ") { c = c.substring(1, c.length); }
-		if (c.indexOf(NameEQ) == 0) { return c.substring(NameEQ.length, c.length); }
-	}
-	return null;
+//function ReadCookie(Name) {
+//	var NameEQ = Name + "=";
+//	var ca = document.cookie.split(";");
+//	for(var i = 0; i < ca.length; i++) {
+//		var c = ca[i];
+//		while (c.charAt(0)==" ") { c = c.substring(1, c.length); }
+//		if (c.indexOf(NameEQ) == 0) { return c.substring(NameEQ.length, c.length); }
+//	}
+//	return null;
+//}
+
+//read cookie and return
+function ReadCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
 }
-
-
 // —————————	v4.0 delete cookie
 
 function DeleteCookie(Name) {
