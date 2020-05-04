@@ -47,32 +47,61 @@ var ShoppingList = [];
 
 // —————————	Week 15: v4.1 ShareList via bitly api
 
-function PassList() {
+//function PassList() {
 	//	replace YOURGITHUBURL with your Github repo URL example: Konkollist.github.io
 	var url = "https://webman2020.github.io/week15/index.html?list=" + ShoppingList;
-
+//
 	//	replace with your NEW Bit.ly TOKEN
-	var accessToken = "81f621fe719173e36cb24f0f61f31843afce8114";
+//	var accessToken = "81f621fe719173e36cb24f0f61f31843afce8114";
+//
+//	var params = { "long_url" : url };
+//
+//	$.ajax({
+//		url: "https://api-ssl.bitly.com/v4/shorten",
+//		cache: false,
+//		dataType: "json",
+//		method: "POST",
+//		contentType: "application/json",
+//		beforeSend: function (xhr) {
+//			xhr.setRequestHeader("Authorization", "Bearer " + accessToken);
+//		},
+//		data: JSON.stringify(params)
+//	}).done(function(data) {
+//		getshorturl = 1;
+//		document.getElementById("ShareList").innerHTML = "The URL to share the list:\n" + data.link;
+//		CopyToClipBoard(data.link);
+//	}).fail(function(data) {
+//		document.getElementById("ShareList").innerHTML = "The URL to share the list:\n" + url;
+//		CopyToClipBoard(url);
+//	});
+//}
 
-	var params = { "long_url" : url };
+function PassList()
+{
+ var url = "https://webman2020.github.io/week15/index.html?list=" + ShoppingList;
+    var accessToken = "81f621fe719173e36cb24f0f61f31843afce8114";
 
-	$.ajax({
-		url: "https://api-ssl.bitly.com/v4/shorten",
-		cache: false,
-		dataType: "json",
-		method: "POST",
-		contentType: "application/json",
-		beforeSend: function (xhr) {
-			xhr.setRequestHeader("Authorization", "Bearer " + accessToken);
-		},
-		data: JSON.stringify(params)
+    var params = {
+        "long_url" : url           
+    };
+
+    $.ajax({
+        url: "https://api-ssl.bitly.com/v4/shorten",
+        cache: false,
+        dataType: "json",
+        method: "POST",
+        contentType: "application/json",
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Authorization", "Bearer " + accessToken);
+        },
+        data: JSON.stringify(params)
 	}).done(function(data) {
 		getshorturl = 1;
-		document.getElementById("ShareList").innerHTML = "The URL to share the list:\n" + data.link;
-		CopyToClipBoard(data.link);
+		document.getElementById("sharelist").innerHTML = "The URL to share the list:\n" + data.link;
+		copyToClipboard(data.link);
 	}).fail(function(data) {
-		document.getElementById("ShareList").innerHTML = "The URL to share the list:\n" + url;
-		CopyToClipBoard(url);
+		document.getElementById("sharelist").innerHTML = "The URL to share the list:\n" + url;
+		copyToClipboard(URL);
 	});
 }
 
