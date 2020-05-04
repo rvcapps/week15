@@ -159,20 +159,17 @@ function PopulateShoppingListonload() {
 // —————————	v4.0 remove and format cookie
 
 function RemoveUnwanted(str) {
-	if ((str === null) || (str === "")) {
-		return false;
-	} else {
-		str = str.toString();
-
-		/*	HAD TO COMMENT OUT THE LINE BELOW THAT REMOVES SPACES BECAUSE
-			I HAVE SPACES REMOVED IN FUNCTION AddShoppingList()
-
-			str = str.replace(/%20/g, "");		*/
-
-		str = str.replace(/%24/g, "$"); 
-		str = str.replace(/%7C/g, " | ");
-		return str.replace(/[^\x20-\x7E]/g, "");
-	}
+	if ((str===null) || (str===''))  
+       return false;  
+ else  
+   str = str.toString();
+    //clean space
+   str = str.replace(/%20/g, " ");
+    //clean !
+    str = str.replace(/%21/g, "!");
+   str = str.replace(/%24/g, "$"); 
+   str = str.replace(/%7C/g, " | ");
+  return str.replace(/[^\x20-\x7E]/g, '');  
 }
 
 
